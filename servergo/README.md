@@ -1,0 +1,3 @@
+Run Project
+go run ...file...
+
