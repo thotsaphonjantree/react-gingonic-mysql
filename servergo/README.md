@@ -1,3 +1,3 @@
-Run Project
-go run ...file...
+In the project directory, you can run:
 
+### `go run`
