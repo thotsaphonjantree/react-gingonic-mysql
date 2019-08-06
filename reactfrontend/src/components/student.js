@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class student extends Component {
+export class Student extends Component {
     constructor(props) {
         super(props)
 
         this.state = { rows: [] }
     }
-    myfunction = () => {
+    getStudent = () => {
         var dataAllStudent = []
         Axios.get('http://localhost:8080/students').then(result => {
             console.log(result.data)
@@ -18,7 +18,7 @@ export class student extends Component {
         })
     }
     componentDidMount() {
-        { this.myfunction() }
+        { this.getStudent() }
     }
 
     render() {
@@ -49,4 +49,4 @@ export class student extends Component {
 
 }
 
-export default student
+export default Student

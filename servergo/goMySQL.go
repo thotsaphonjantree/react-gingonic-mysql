@@ -19,13 +19,15 @@ type Student struct {
 	StudentCode string  `json:"student_code"`
 	FirstName    string `json:"first_name"`
 	LastName	string `json:"last_name"`
-	MajorID      int  `json:"-"`
+	MajorID      int  `json:"major_id"`
 	Major 		Major `gorm:"foreignkey:major_id;association_foreignkey:major_id"`
+	
+	//Major Major `gorm:"ForeignKey:major_id" json:"major"`
+	//CustId      int  `json:"customer_id"`
 
 }
 
 type Major struct {
-
 	MajorID   int       `gorm:"primary_key" json:"major_id"`
 	MajorName string    `json:"major_name"`
 	//Students  []Student `gorm:"ForeignKey:major_id" json:"Students"`
@@ -49,7 +51,7 @@ func main() {
 	router.GET("/majors", getMajors)
 	router.GET("/students", getStudents)
 	router.POST("/student", insertStudent)
-	router.Run(":8080")
+	router.Run()
 }
 
 func getMajors(c *gin.Context) {
@@ -61,6 +63,10 @@ func getMajors(c *gin.Context) {
 
 func getStudents(c *gin.Context) {
 	var student []Student
+
+	//db.Preload("Major").Find(&student)
+	//db.Preload("Major").Find(&student,"major_id = ? ")
+	
 	db.Joins("JOIN major on student.major_id = major.major_id ").Preload("Major").Find(&student)
 	c.JSON(http.StatusOK, student)
 }
@@ -71,6 +77,6 @@ func insertStudent(c *gin.Context) {
 
 	c.Bind(&student)
 	db.Create(&student)
-	c.JSON(400, gin.H{"success": student})
+	c.JSON(201, gin.H{"success": student})
 	db.Save(&student)
 }
