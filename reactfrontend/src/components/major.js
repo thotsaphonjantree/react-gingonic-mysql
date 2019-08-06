@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-export class major extends Component {
+export class Major extends Component {
     constructor(props) {
         super(props)
 
@@ -10,9 +10,10 @@ export class major extends Component {
 
     componentDidMount() {
 
-        { this.myfunction() }
+        { this.getMajor() }
     }
-    myfunction = () => {
+
+    getMajor = () => {
         var dataAllMajor = []
         Axios.get('http://localhost:8080/majors').then(result => {
             console.log(result.data)
@@ -44,4 +45,4 @@ export class major extends Component {
     }
 }
 
-export default major
+export default Major
