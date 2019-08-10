@@ -27,6 +27,7 @@ export class Major extends Component {
         return (
             <div>
                 <center>
+                    <h1>Majors</h1>
                     <table border='1' width='50%'>
                         <tbody>
                             <tr>

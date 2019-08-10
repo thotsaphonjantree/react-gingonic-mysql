@@ -4,7 +4,7 @@ import Major from './components/Major';
 import Student from './components/Student';
 import Home from './components/Home';
 import PostStudent from './components/PostStudent';
-
+import StudentInfo from './components/StudentInfo';
 class App extends Component {
   render() {
     return (
@@ -16,7 +16,7 @@ class App extends Component {
               <tr>
                 <td><Link to={'/'} className="nav-link"> Home </Link></td>
                 <td><Link to={'/major'} className="nav-link">Major</Link></td>
-                <td><Link to={'/student'} className="nav-link">Student</Link></td>
+                <td><Link to={'/students'} className="nav-link">Student</Link></td>
                 <td><Link to={'/poststudent'} className="nav-link">Add Student</Link></td>
               </tr>
             </tbody>
@@ -25,8 +25,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/major' component={Major} />
-            <Route path='/student' component={Student} />
+            <Route path='/students' component={Student} />
             <Route path='/poststudent' component={PostStudent} />
+            <Route path="/student/:studentId" component={StudentInfo} />
           </Switch>
         </div>
       </Router>
