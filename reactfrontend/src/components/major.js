@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import { Link } from 'react-router-dom';
 
 export class Major extends Component {
     constructor(props) {
@@ -35,7 +36,8 @@ export class Major extends Component {
                             </tr>
                             {this.state.rows.map(item => (
                                 <tr key={item.major_id}>
-                                    <td>{item.major_id}</td><td>{item.major_name}</td>
+                                    <td>{item.major_id}</td>
+                                    <td><Link to={`/sbymajor/${item.major_id}`}>{item.major_name}</Link></td>
                                 </tr>
                             ))}
                         </tbody>

@@ -49,7 +49,9 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 	router.GET("/majors", getMajors)
+	router.GET("/major/:id", getMajor)
 	router.GET("/students", getStudents)
+	router.GET("/studentbymajor/:id", getStudentByMajor)
 	router.GET("/student/:id", getStudent)
 	router.POST("/student", insertStudent)
 	router.PUT("/student/:id", UpdateStudent)
@@ -73,6 +75,33 @@ func getStudents(c *gin.Context) {
 		c.JSON(200, student)
 	}
 }
+
+
+
+func getStudentByMajor(c *gin.Context) {
+	var student []Student
+	id := c.Param("id")
+	if err := db.Joins("JOIN major on student.major_id = major.major_id ").Preload("Major").Where("student.major_id = ?",id).Find(&student).Error; err != nil {
+		c.AbortWithStatus(404)
+		fmt.Println(err)
+	} else {
+		c.JSON(200, student)
+	}
+}
+
+
+func getMajor(c *gin.Context) {
+	id := c.Param("id")
+	var major Major
+
+	if err := db.Find(&major, id).Error; err != nil {
+		c.Status(http.StatusNotFound)
+		return
+	}
+
+	c.JSON(http.StatusOK, major)
+}
+
 
 func getStudent(c *gin.Context) {
 	id := c.Param("id")

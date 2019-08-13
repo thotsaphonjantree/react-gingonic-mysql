@@ -5,6 +5,7 @@ import Student from './components/Student';
 import Home from './components/Home';
 import PostStudent from './components/PostStudent';
 import StudentInfo from './components/StudentInfo';
+import Studentbymajor from './components/Studentbymajor';
 class App extends Component {
   render() {
     return (
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path='/students' component={Student} />
             <Route path='/poststudent' component={PostStudent} />
             <Route path="/student/:studentId" component={StudentInfo} />
+            <Route path="/sbymajor/:majorId" component={Studentbymajor} />
           </Switch>
         </div>
       </Router>

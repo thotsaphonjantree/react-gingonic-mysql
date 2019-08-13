@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom';
-export class Student extends Component {
+export class Studentbymajor extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { rows: [] }
+        this.state = { rows: [],major:'' }
     }
-    getStudent = () => {
+    getStudentbyMajor = () => {
+        const { match: { params } } = this.props;
         var dataAllStudent = []
-        Axios.get('http://localhost:8080/students').then(result => {
+        Axios.get(`http://localhost:8080/studentbymajor/${params.majorId}`).then(result => {
             console.log(result.data)
             result.data.forEach(item => {
                 dataAllStudent.push(item)
@@ -17,8 +18,18 @@ export class Student extends Component {
             this.setState({ rows: dataAllStudent })
         })
     }
+
+    getMajorbyID() {
+        const { match: { params } } = this.props;
+        Axios.get(`http://localhost:8080/major/${params.majorId}`).then(result => {
+            this.setState({ major: result.data })
+            console.log(result.data);
+        })
+    }
+
     componentDidMount() {
-        { this.getStudent() }
+        { this.getStudentbyMajor() }
+        { this.getMajorbyID() }
     }
 
     render() {
@@ -26,7 +37,7 @@ export class Student extends Component {
 
             <div>
                 <center>
-                    <h1>Students</h1>
+                    <h1>{this.state.major.major_name}</h1>
                     <table border='1' width='80%'>
                         <tbody>
                             <tr><th>No.</th>
@@ -36,7 +47,7 @@ export class Student extends Component {
                                 <th>Major</th>
                             </tr>
                             {this.state.rows.map((item, index) => (
-                                <tr key={index}><td>{index+1}</td>
+                                <tr key={index}><td>{index + 1}</td>
                                     <td><Link to={`/student/${item.student_id}`}>{item.student_code}</Link></td>
                                     <td>{item.first_name}</td>
                                     <td>{item.last_name}</td>
@@ -52,4 +63,4 @@ export class Student extends Component {
 
 }
 
-export default Student
+export default Studentbymajor

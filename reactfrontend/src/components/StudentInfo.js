@@ -75,7 +75,7 @@ export default class StudentInfo extends Component {
         return (
             <div>
                 <center>
-                    <h1>Add Student</h1>
+                    <h1>Edit Student</h1>
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Student ID:
