@@ -15,7 +15,7 @@ export default class StudentInfo extends Component {
 
     getMajor = () => {
         var dataAllMajor = []
-        Axios.get('http://localhost:8080/majors').then(result => {
+        Axios.get('http://localhost:8080/major').then(result => {
             console.log(result.data)
             result.data.forEach(item => {
                 dataAllMajor.push(item)

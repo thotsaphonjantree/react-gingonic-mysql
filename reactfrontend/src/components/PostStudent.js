@@ -30,7 +30,7 @@ export default class PostStudent extends Component {
     }
     getMajor = () => {
         var dataAllMajor = []
-        axios.get('http://localhost:8080/majors').then(result => {
+        axios.get('http://localhost:8080/major').then(result => {
             // console.log(result.data)
             result.data.forEach(item => {
                 dataAllMajor.push(item)
@@ -67,28 +67,19 @@ export default class PostStudent extends Component {
             <div><center>
                 <h1>Add Student</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Student ID:
-                <input type="text" name="student_code" value={this.state.student_code} onChange={this.handleInputChange} />
-                    </label><br />
-                    <label>
-                        First Name:
-                <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInputChange} />
-                    </label><br />
-                    <label>
-                        Last Name:
-                <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInputChange} />
-                    </label><br />
-                    <label>
-                        <select name="major_id" value={this.state.major_id} onChange={this.handleInputChange}>
-                            <option value="DEFAULT">Select Major:</option>
-                            {this.state.rows.map((item, index) => (
-                                <option value={item.major_id} key={index} >{item.major_name}</option>
-                            ))}
-                        </select>
-                    </label>
-                    <br />
-                    <button type="submit">Add</button>
+                    <table width="50%">
+                        <tr><td>Student ID</td><td><input type="text" name="student_code" size="80" value={this.state.student_code} onChange={this.handleInputChange} /></td></tr>
+                        <tr><td>First Name</td><td><input type="text" name="first_name" size="80" value={this.state.first_name} onChange={this.handleInputChange} /></td></tr>
+                        <tr><td>Last Name</td><td><input type="text" name="last_name" size="80" value={this.state.last_name} onChange={this.handleInputChange} /></td></tr>
+                        <tr><td>Major</td><td>
+                            <select name="major_id" value={this.state.major_id} onChange={this.handleInputChange}>
+                                <option disabled={true} value="">Please select one</option>
+                                {this.state.rows.map((item, index) => (
+                                    <option value={item.major_id} key={index} >{item.major_name}</option>
+                                ))}
+                            </select></td></tr>
+                        <tr><td colSpan="2" align="center"><button type="submit">Add</button></td></tr>
+                    </table>
                 </form>
             </center>
 

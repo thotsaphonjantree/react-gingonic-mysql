@@ -9,7 +9,7 @@ export class Student extends Component {
     }
     getStudent = () => {
         var dataAllStudent = []
-        Axios.get('http://localhost:8080/students').then(result => {
+        Axios.get('http://localhost:8080/student').then(result => {
             console.log(result.data)
             result.data.forEach(item => {
                 dataAllStudent.push(item)
