@@ -11,6 +11,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+        <center>
+          <div style={{backgroundColor: "#99ebff"}}>
           <h2>React + Gin + MySQL</h2>
           <table>
             <tbody>
@@ -23,6 +25,7 @@ class App extends Component {
             </tbody>
           </table>
           <hr />
+          </div>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/major' component={Major} />
@@ -31,6 +34,7 @@ class App extends Component {
             <Route path="/student/:studentId" component={StudentInfo} />
             <Route path="/sbymajor/:majorId" component={Studentbymajor} />
           </Switch>
+          </center>
         </div>
       </Router>
     )

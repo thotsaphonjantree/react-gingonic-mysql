@@ -77,35 +77,21 @@ export default class StudentInfo extends Component {
                 <center>
                     <h1>Edit Student</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Student ID:
-                <input type="text" name="student_code" value={this.state.student.student_code || ''} onChange={this.handleInputChange} />
-                        </label><br />
-                        <label>
-                            First Name:
-                <input type="text" name="first_name" value={this.state.student.first_name || ''} onChange={this.handleInputChange} />
-                        </label><br />
-                        <label>
-                            Last Name:
-                <input type="text" name="last_name" value={this.state.student.last_name || ''} onChange={this.handleInputChange} />
-                        </label><br />
-                        <label>
-                            Major:
-                        <select name="major_id" value={this.state.student.major_id} onChange={this.handleInputChange}>
-                                <option value={this.state.major.major_id} disabled>{this.state.major.major_name}</option>
-                                {this.state.rows.map((item, index) => (
-                                    <option value={item.major_id} key={index} >{item.major_name}</option>
-                                ))}
-                            </select>
-                        </label><br />
-                        <button type="submit">Edit</button>
-                        <button onClick={this.handleDelete}>
-                            Delete
-                </button>
+                        <table width="50%">
+                            <tr><td>Student ID</td><td><input type="text" name="student_code" size="80" value={this.state.student.student_code || ''} onChange={this.handleInputChange} /></td></tr>
+                            <tr><td>First Name</td><td><input type="text" name="first_name" size="80" value={this.state.student.first_name || ''} onChange={this.handleInputChange} /></td></tr>
+                            <tr><td>Last Name</td><td><input type="text" name="last_name" size="80" value={this.state.student.last_name || ''} onChange={this.handleInputChange} /></td></tr>
+                            <tr><td>Major</td><td>
+                                <select name="major_id" value={this.state.student.major_id} onChange={this.handleInputChange}>
+                                    <option disabled={true} value="">Please select one</option>
+                                    {this.state.rows.map((item, index) => (
+                                        <option value={item.major_id} key={index} >{item.major_name}</option>
+                                    ))}
+                                </select></td></tr>
+                            <tr><td colSpan="2" align="center"><button type="submit">Edit</button><button onClick={this.handleDelete}>Delete</button></td></tr>
+                        </table>
                     </form>
                 </center>
-
-
             </div>
         )
     }

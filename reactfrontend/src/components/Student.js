@@ -27,7 +27,7 @@ export class Student extends Component {
             <div>
                 <center>
                     <h1>Students</h1>
-                    <table border='1' width='80%'>
+                    <table border='1' width='80%' cellspacing="0">
                         <tbody>
                             <tr><th>No.</th>
                                 <th>Student ID</th>
