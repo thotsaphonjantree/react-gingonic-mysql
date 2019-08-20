@@ -13,7 +13,7 @@ class App extends Component {
         <div>
         <center>
           <div style={{backgroundColor: "#ffffff"}}>
-          <h2>React + Gin + MySQL</h2>
+          <h2>React  Gin  MySQL</h2>
           <table>
             <tbody>
               <tr>
