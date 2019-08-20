@@ -29,7 +29,6 @@ export default class StudentInfo extends Component {
         Axios.get(`http://localhost:8080/student/${params.studentId}`).then(result => {
             this.setState({ student: result.data, major: result.data.Major })
             console.log(result.data);
-            console.log(this.state.student.Major);
         })
     }
 
