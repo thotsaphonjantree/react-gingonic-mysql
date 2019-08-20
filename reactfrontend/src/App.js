@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
         <div>
         <center>
-          <div style={{backgroundColor: "#99ebff"}}>
+          <div style={{backgroundColor: "#ffffff"}}>
           <h2>React + Gin + MySQL</h2>
           <table>
             <tbody>

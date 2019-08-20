@@ -48,9 +48,9 @@ func main() {
 
 	router := gin.Default()
 	router.Use(cors.Default())
-	router.GET("/majors", getMajors)
+	router.GET("/major", getMajors)
 	router.GET("/major/:id", getMajor)
-	router.GET("/students", getStudents)
+	router.GET("/student", getStudents)
 	router.GET("/studentbymajor/:id", getStudentByMajor)
 	router.GET("/student/:id", getStudent)
 	router.POST("/student", insertStudent)

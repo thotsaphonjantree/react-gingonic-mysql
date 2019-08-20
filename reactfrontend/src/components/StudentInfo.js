@@ -39,7 +39,7 @@ export default class StudentInfo extends Component {
             .then(() => {
                 console.log('user deleted');
             });
-        window.location = '/students/';
+        //window.location = '/students/';
     }
 
     handleInputChange(event) {
@@ -67,7 +67,7 @@ export default class StudentInfo extends Component {
                 console.log(res.data);
             })
         console.dir(this.state);
-        window.location = '/students/';
+        //window.location = '/students/';
     }
 
 
@@ -76,21 +76,21 @@ export default class StudentInfo extends Component {
             <div>
                 <center>
                     <h1>Edit Student</h1>
-                    <form onSubmit={this.handleSubmit}>
                         <table width="50%">
-                            <tr><td>Student ID</td><td><input type="text" name="student_code" size="80" value={this.state.student.student_code || ''} onChange={this.handleInputChange} /></td></tr>
-                            <tr><td>First Name</td><td><input type="text" name="first_name" size="80" value={this.state.student.first_name || ''} onChange={this.handleInputChange} /></td></tr>
-                            <tr><td>Last Name</td><td><input type="text" name="last_name" size="80" value={this.state.student.last_name || ''} onChange={this.handleInputChange} /></td></tr>
-                            <tr><td>Major</td><td>
-                                <select name="major_id" value={this.state.student.major_id} onChange={this.handleInputChange}>
-                                    <option disabled={true} value="">Please select one</option>
-                                    {this.state.rows.map((item, index) => (
-                                        <option value={item.major_id} key={index} >{item.major_name}</option>
-                                    ))}
-                                </select></td></tr>
-                            <tr><td colSpan="2" align="center"><button type="submit">Edit</button><button onClick={this.handleDelete}>Delete</button></td></tr>
+                            <tbody>
+                                <tr><td>Student ID</td><td><input type="text" name="student_code" size="80" value={this.state.student.student_code || ''} onChange={this.handleInputChange} /></td></tr>
+                                <tr><td>First Name</td><td><input type="text" name="first_name" size="80" value={this.state.student.first_name || ''} onChange={this.handleInputChange} /></td></tr>
+                                <tr><td>Last Name</td><td><input type="text" name="last_name" size="80" value={this.state.student.last_name || ''} onChange={this.handleInputChange} /></td></tr>
+                                <tr><td>Major</td><td>
+                                    <select name="major_id" value={this.state.student.major_id} onChange={this.handleInputChange}>
+                                        <option disabled={true} value="">Please select one</option>
+                                        {this.state.rows.map((item, index) => (
+                                            <option value={item.major_id} key={index} >{item.major_name}</option>
+                                        ))}
+                                    </select></td></tr>
+                                <tr><td colSpan="2" align="center"><button onClick={this.handleSubmit}>Edit</button><button onClick={this.handleDelete}>Delete</button></td></tr>
+                            </tbody>
                         </table>
-                    </form>
                 </center>
             </div>
         )

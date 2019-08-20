@@ -68,6 +68,7 @@ export default class PostStudent extends Component {
                 <h1>Add Student</h1>
                 <form onSubmit={this.handleSubmit}>
                     <table width="50%">
+                        <tbody>
                         <tr><td>Student ID</td><td><input type="text" name="student_code" size="80" value={this.state.student_code} onChange={this.handleInputChange} /></td></tr>
                         <tr><td>First Name</td><td><input type="text" name="first_name" size="80" value={this.state.first_name} onChange={this.handleInputChange} /></td></tr>
                         <tr><td>Last Name</td><td><input type="text" name="last_name" size="80" value={this.state.last_name} onChange={this.handleInputChange} /></td></tr>
@@ -79,6 +80,7 @@ export default class PostStudent extends Component {
                                 ))}
                             </select></td></tr>
                         <tr><td colSpan="2" align="center"><button type="submit">Add</button></td></tr>
+                        </tbody>
                     </table>
                 </form>
             </center>

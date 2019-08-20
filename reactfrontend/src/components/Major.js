@@ -29,7 +29,7 @@ export class Major extends Component {
             <div>
                 <center>
                     <h1>Majors</h1>
-                    <table border='1' width='50%' cellspacing="0">
+                    <table border='1' width='50%' cellSpacing="0">
                         <tbody>
                             <tr>
                                 <th>No.</th><th>Major</th>
