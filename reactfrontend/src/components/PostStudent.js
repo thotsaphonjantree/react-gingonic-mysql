@@ -60,7 +60,7 @@ export default class PostStudent extends Component {
                 console.log(res.data);
             })
         console.dir(this.state);
-        window.location = '/students/';
+        //window.location = '/students/';
     }
     render() {
         return (
