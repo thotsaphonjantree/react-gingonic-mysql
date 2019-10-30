@@ -60,6 +60,35 @@ func (h *Handler) Initialize() {
 	db.Model(&Student{}).AddForeignKey("major_id", "major(major_id)", "CASCADE", "CASCADE")
 	db.Model(&Major{}).AddIndex("index_major_id_name", "major_id", "major_name")
 
+	
+	// var majors []Major = []Major{
+	// 	Major{MajorName:"Computer Engineering"},
+	// 	Major{MajorName:"Electrical Engineering"},
+	// 	Major{MajorName:"Mechanical Engineering"},
+	// 	Major{MajorName:"Civil Engineering"},
+	// }
+
+	// for _, major := range majors {
+	// 	db.Create(&major)
+	// }
+	
+	if err := db.Where("major_name = ?","Computer Engineering ").Find(&Major{}).Error; err != nil {
+		major0 := &Major{MajorName:"Computer Engineering"}
+		db.Create(&major0)
+	}
+	if err := db.Where("major_name = ?","Electrical Engineering ").Find(&Major{}).Error; err != nil {
+		major1 := &Major{MajorName:"Electrical Engineering"}
+		db.Create(&major1)
+	}
+	if err := db.Where("major_name = ?","Civil Engineering ").Find(&Major{}).Error; err != nil {
+		major2 := &Major{MajorName:"Civil Engineering"}
+		db.Create(&major2)
+	}
+	if err := db.Where("major_name = ?","Mechanical Engineering ").Find(&Major{}).Error; err != nil {
+		major3 := &Major{MajorName:"Mechanical Engineering"}
+		db.Create(&major3)
+	}
+
 	h.DB = db
 }
 
